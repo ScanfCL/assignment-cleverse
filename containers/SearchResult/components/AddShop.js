@@ -60,7 +60,7 @@ export const AddShop = observer(styled(({ className }) => {
         onChange={(value) => handleChangeForm("location", value)}
       />
       <Input
-        label="Image Url"
+        label="Image Url (optional)"
         value={formState.imageUrl}
         onChange={(value) => handleChangeForm("imageUrl", value)}
       />
