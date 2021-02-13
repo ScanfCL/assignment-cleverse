@@ -6,6 +6,7 @@ import { Radio } from "../../../components/Radio";
 import { Select } from "../../../components/Select";
 import { Input } from "../../../components/Input";
 import { OutlineButton } from "../../../components/Button";
+import { Location } from "../../../components/Icons";
 
 const Sidebar = ({ className }) => {
   return (
@@ -25,7 +26,10 @@ const Sidebar = ({ className }) => {
       <Radio name="radio1" label="รับเหมา/งานช่าง/ทำความสะอาด" />
       <Radio name="radio1" label="สุขภาพ/การแพทย์" />
       <div className="topic">จังหวัด/ใกล้ฉัน</div>
-      <Select placeholder="พื้นที่ใกล้ฉัน" />
+      <Select
+        placeholder="พื้นที่ใกล้ฉัน"
+        icon={<Location className="location" />}
+      />
       <div className="topic">ช่วงราคาสินค้า (บาท)</div>
       <div className="wrapper-price-range">
         <Input type="number" /> - <Input type="number" />
@@ -42,7 +46,7 @@ const StyledSidebar = styled(Sidebar)`
   margin-right: 2rem;
   height: fit-content;
   background: white;
-  
+
   > .topic {
     font-size: 16px;
     font-weight: bold;

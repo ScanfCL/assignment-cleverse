@@ -1,5 +1,8 @@
 import React from "react";
 import hoistNonReactStatics from "hoist-non-react-statics";
+import { observer } from "mobx-react";
+
+import { useStore } from "../../pages";
 
 export function withSearchResultPage(Component) {
   function WithSearchResultPage(props) {
@@ -16,3 +19,7 @@ export function withSearchResultPage(Component) {
 
   return WithSearchResultPage;
 }
+
+// export async function getStaticProps() {
+//   return { shops: shops.shops };
+// }

@@ -1,12 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 
+const typeShop = {
+  food: {
+    avatar: "/images/icon-food.svg",
+  },
+  shop: {
+    avatar: "/images/icon-etc.svg",
+  },
+  otop: {
+    avatar: "/images/icon-otop.svg",
+  },
+};
+
 export const ShopCard = styled(
-  ({ className, imageUrl, name, category, location, joinedProject }) => {
+  ({ className, imageUrl, name, category, location, joinedProject, type }) => {
     return (
       <div className={className}>
-        <div className="wrapper-image">
-          <img />
+        <div className={`wrapper-image  ${type}`}>
+          {imageUrl ? (
+            <img
+              className="avatar-shop-picture"
+              src={imageUrl}
+              alt="cover-shop"
+            />
+          ) : (
+            <img
+              className="avatar-shop"
+              src={typeShop[type].avatar}
+              alt="cover-shop"
+            />
+          )}
         </div>
         <div className="info">
           <div className="name">{name}</div>
@@ -31,13 +55,35 @@ export const ShopCard = styled(
 
   > .wrapper-image {
     display: flex;
-    background-color: rgba(253, 178, 111, 0.68);
     align-items: center;
     justify-content: center;
     width: 250px;
-    height: 100%;
+    height: 250px;
     min-height: 14rem;
     border-radius: 10px;
+
+    &.food {
+      background-color: rgba(253, 178, 111, 0.68);
+    }
+
+    &.shop {
+      background-color: rgb(208, 179, 225);
+    }
+
+    &.otop {
+      background-color: rgb(136, 221, 187);
+    }
+
+    > .avatar-shop {
+      width: 100px;
+    }
+
+    > .avatar-shop-picture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
   }
 
   > .info {

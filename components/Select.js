@@ -4,7 +4,13 @@ import styled from "styled-components";
 import { Location } from "./Icons";
 
 export const Select = styled(
-  ({ className, options = [], placeholder = "please-select", value = "" }) => {
+  ({
+    className,
+    options = [],
+    placeholder = "please-select",
+    value = "",
+    icon,
+  }) => {
     return (
       <div className={className}>
         <select name="cars" id="cars" value={value}>
@@ -15,7 +21,7 @@ export const Select = styled(
             <option value={option}>{option}</option>
           ))}
         </select>
-        <Location className="location" />
+        {icon && icon}
       </div>
     );
   }
@@ -37,6 +43,5 @@ export const Select = styled(
     height: 30px;
     padding: 0 10px 0 30px;
     width: 100%;
-    z-index: -1;
   }
 `;

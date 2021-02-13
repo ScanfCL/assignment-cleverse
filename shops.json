@@ -1,0 +1,29 @@
+{
+  "shops": [
+    {
+      "imageUrl": "https://search-merchant.xn--42caj4e6bk1f5b1j.com/img/upload/f52c24d0-9d7c-4d37-9ff0-88dcb10ea972/medium",
+      "name": "ผลไม้ลุงกับป้า1",
+      "category": "ร้านขายผลไม้ / ร้านขายผัก",
+      "location": "บางบัวทอง",
+      "type": "food"
+    },
+    {
+      "name": "ผลไม้ลุงกับป้า2",
+      "category": "ร้านขายผลไม้ / ร้านขายผัก",
+      "location": "บางบัวทอง",
+      "type": "shop"
+    },
+    {
+      "name": "ผลไม้ลุงกับป้า3",
+      "category": "ร้านขายผลไม้ / ร้านขายผัก",
+      "location": "บางบัวทอง",
+      "type": "otop"
+    },
+    {
+      "name": "ผลไม้ลุงกับป้า4",
+      "category": "ร้านขายผลไม้ / ร้านขายผัก",
+      "location": "บางบัวทอง",
+      "type": "food"
+    }
+  ]
+}

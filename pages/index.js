@@ -1,27 +1,38 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import Image from "next/image";
+import { useLocalStore } from "mobx-react";
 
 import { Header } from "../components/Header";
 import { Breadcrumbs } from "../components/Breadcrumbs";
-
 import { SearchResultPage } from "../containers/SearchResult";
+import { createStore } from "../stores/shops";
 
-function Home() {
+const StoreContext = createContext(null);
+
+function Home({ shops }) {
+  const store = useLocalStore(createStore);
+
   return (
-    <div>
-      <Header />
-      <Breadcrumbs />
-      <SearchResultPage />
-      <div className="wrapper-bg-image">
-        <Image
-          className="bg-image"
-          layout="fill"
-          src="/images/result-bg.png"
-          alt="bg-image"
-        />
+    <StoreContext.Provider value={store}>
+      <div>
+        <Header />
+        <Breadcrumbs />
+        <SearchResultPage />
+        <div className="wrapper-bg-image">
+          <Image
+            className="bg-image"
+            layout="fill"
+            src="/images/result-bg.png"
+            alt="bg-image"
+          />
+        </div>
       </div>
-    </div>
+    </StoreContext.Provider>
   );
 }
+
+export const useStore = () => {
+  return useContext(StoreContext);
+};
 
 export default Home;

@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "hoist-non-react-statics": "^3.3.2",
     "mobx": "^6.1.6",
     "mobx-react": "^7.1.0",
