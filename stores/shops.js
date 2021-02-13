@@ -1,11 +1,21 @@
 import shops from "../shops.json";
 
 export function createStore() {
-  // note the use of this which refers to observable instance of the store
   return {
     shops: shops.shops,
-    get allShops() {
-      return this.shops;
+    searchShops(value) {
+      return this.shops.filter((shop) => shop.name.includes(value));
+    },
+    filterShopsByProject(value) {
+      return this.shops.filter((shop) =>
+        value.every((project) => shop.joinedProject.includes(project))
+      );
+    },
+    addShop(newShop) {
+      this.shops = [newShop, ...this.shops];
+    },
+    removeShop(index) {
+      this.shops.splice(index, 1);
     },
   };
 }

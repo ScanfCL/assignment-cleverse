@@ -4,21 +4,28 @@ import styled from "styled-components";
 import { Location, SearchIcon } from "./Icons";
 import { Select } from "./Select";
 
-export const SearchInput = styled(({ className, placeholder }) => {
-  return (
-    <div className={className}>
-      <Select
-        className="select-field"
-        placeholder="พื้นที่ใกล้ฉัน"
-        icon={<Location className="location" />}
-      />
-      <input className="search-field" placeholder={placeholder} />
-      <button className="button-search">
-        <SearchIcon size={14} />
-      </button>
-    </div>
-  );
-})`
+export const SearchInput = styled(
+  ({ className, placeholder, onChange, value }) => {
+    return (
+      <div className={className}>
+        <Select
+          className="select-field"
+          placeholder="พื้นที่ใกล้ฉัน"
+          icon={<Location className="location" />}
+        />
+        <input
+          defaultValue={value}
+          className="search-field"
+          placeholder={placeholder}
+          onChange={(e) => onChange(e.target.value)}
+        />
+        <button className="button-search">
+          <SearchIcon size={14} />
+        </button>
+      </div>
+    );
+  }
+)`
   display: flex;
 
   > .select-field {
@@ -43,6 +50,7 @@ export const SearchInput = styled(({ className, placeholder }) => {
     border-right: 0;
     width: 100%;
     padding: 0 10px;
+    font-family: "Kanit", sans-serif;
 
     > ::placeholder {
       color: #999999;

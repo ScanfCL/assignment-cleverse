@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 import { Checkbox } from "../../../components/CheckBox";
 import { Radio } from "../../../components/Radio";
@@ -7,13 +8,74 @@ import { Select } from "../../../components/Select";
 import { Input } from "../../../components/Input";
 import { OutlineButton } from "../../../components/Button";
 import { Location } from "../../../components/Icons";
+import { useHome, useStore } from "../../../pages";
 
 const Sidebar = ({ className }) => {
+  const { shopsState, setShopsState } = useHome();
+  const { filterShopsByProject } = useStore();
+  const router = useRouter();
+
+  const handleUpdateQueryString = (value) => {
+    if (router.query.type) {
+      let type = router.query.type.split(",");
+
+      if (!type.includes(value)) {
+        type = [...type, value];
+        router.push({ query: { ...router.query, type: type.join(",") } });
+      } else {
+        type = type.filter((t) => t !== value);
+        router.push({ query: { ...router.query, type: type.join(",") } });
+      }
+    } else {
+      router.push({ query: { ...router.query, type: value } });
+    }
+  };
+
+  useEffect(() => {
+    if (router.query.type) {
+      setShopsState(filterShopsByProject(router.query.type.split(",")));
+    }
+  }, [router.query.type]);
+
   return (
     <div className={className}>
       <div className="topic">ค้นหาจากโครงการ</div>
-      <Checkbox name="checkbox1" label="คนละครึ่ง" />
-      <Checkbox name="checkbox2" label="เราชนะ" />
+      <Checkbox
+        name="checkbox1"
+        label="คนละครึ่ง"
+        checked={
+          router.query.type
+            ? router.query.type.split(",").includes("halfhalf")
+            : false
+        }
+        onChange={(e) => {
+          handleUpdateQueryString("halfhalf");
+        }}
+      />
+      <Checkbox
+        name="checkbox2"
+        label="เราชนะ"
+        checked={
+          router.query.type
+            ? router.query.type.split(",").includes("wewin")
+            : false
+        }
+        onChange={(e) => {
+          handleUpdateQueryString("wewin");
+        }}
+      />
+      <Checkbox
+        name="checkbox2"
+        label="ธงฟ้า"
+        checked={
+          router.query.type
+            ? router.query.type.split(",").includes("thongfah")
+            : false
+        }
+        onChange={(e) => {
+          handleUpdateQueryString("thongfah");
+        }}
+      />
       <div className="topic">ประเภทร้านค้า</div>
       <Radio name="radio1" label="ทั้งหมด" />
       <Radio name="radio1" label="ร้านอาหารและเครื่องดื่ม" />
@@ -49,7 +111,7 @@ const StyledSidebar = styled(Sidebar)`
 
   > .topic {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 10px;
   }
 

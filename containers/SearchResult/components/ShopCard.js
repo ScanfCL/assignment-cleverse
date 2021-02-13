@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useStore } from "../../../pages";
 
 const typeShop = {
   food: {
@@ -13,8 +14,25 @@ const typeShop = {
   },
 };
 
+const typeJoinedProject = {
+  halfhalf: "/images/halfhalf-logo.png",
+  wewin: "/images/raochana.png",
+  thongfah: "/images/thongfah-logo.png",
+};
+
 export const ShopCard = styled(
-  ({ className, imageUrl, name, category, location, joinedProject, type }) => {
+  ({
+    className,
+    imageUrl,
+    name,
+    category,
+    location,
+    joinedProject,
+    type,
+    index,
+  }) => {
+    const { removeShop } = useStore();
+
     return (
       <div className={className}>
         <div className={`wrapper-image  ${type}`}>
@@ -41,7 +59,19 @@ export const ShopCard = styled(
           </div>
           <div className="line" />
           <div className="description">โครงการที่เข้าร่วม :</div>
-          <div>{joinedProject}</div>
+          <div className="wrapper-joined-icon">
+            {joinedProject &&
+              joinedProject.map((project) => (
+                <img
+                  className="joined-icon"
+                  src={typeJoinedProject[project]}
+                  alt="project-icon"
+                />
+              ))}
+          </div>
+        </div>
+        <div className="btn-close" onClick={() => removeShop(index)}>
+          X
         </div>
       </div>
     );
@@ -92,7 +122,7 @@ export const ShopCard = styled(
 
     > .name {
       font-size: 20px;
-      font-weight: bold;
+      font-weight: 500;
       line-height: 1.65;
     }
 
@@ -101,11 +131,25 @@ export const ShopCard = styled(
       color: #999999;
     }
 
+    > .wrapper-joined-icon {
+      margin-top: 10px;
+    }
+
     > .line {
       width: 65%;
       height: 1px;
       background-color: rgb(238, 238, 238);
       margin: 18px 0px;
     }
+  }
+
+  .joined-icon {
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  > .btn-close {
+    font-weight: bold;
+    cursor: pointer;
   }
 `;

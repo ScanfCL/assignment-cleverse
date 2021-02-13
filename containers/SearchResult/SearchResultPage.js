@@ -3,13 +3,17 @@ import styled from "styled-components";
 
 import { Sidebar } from "./components/Sidebar";
 import { ShopList } from "./components/ShopList";
+import { AddShop } from "./components/AddShop";
 
 const SearchResultPage = ({ className }) => {
   return (
     <div className={className}>
       <div className="title">ผลการค้นหาทั้งหมด</div>
       <div className="wrapper-content">
-        <Sidebar />
+        <div>
+          <Sidebar />
+          <AddShop />
+        </div>
         <ShopList />
       </div>
     </div>
@@ -21,7 +25,7 @@ const StyledSearchResultPage = styled(SearchResultPage)`
 
   > .title {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 16px;
   }
 

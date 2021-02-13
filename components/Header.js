@@ -1,10 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import debounce from "lodash.debounce";
+import { observer } from "mobx-react";
+import { useRouter } from "next/router";
 
 import { SearchInput } from "./SearchInput";
+import { useHome } from "../pages";
 
-const Header = ({ className }) => {
+const Header = observer(({ className }) => {
+  const router = useRouter();
+
   return (
     <div className={className}>
       <div className="wrapper-content">
@@ -26,11 +32,17 @@ const Header = ({ className }) => {
           height="40"
           width="127"
         />
-        <SearchInput placeholder="ค้นหาร้านค้าหรือบริการที่ร่วมโครงการ" />
+        <SearchInput
+          value={router.query.search}
+          placeholder="ค้นหาร้านค้าหรือบริการที่ร่วมโครงการ"
+          onChange={debounce((value) => {
+            router.push({ query: { search: value } });
+          }, 500)}
+        />
       </div>
     </div>
   );
-};
+});
 
 const StyledHeader = styled(Header)`
   height: 60px;

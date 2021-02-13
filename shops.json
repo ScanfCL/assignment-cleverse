@@ -5,25 +5,29 @@
       "name": "ผลไม้ลุงกับป้า1",
       "category": "ร้านขายผลไม้ / ร้านขายผัก",
       "location": "บางบัวทอง",
-      "type": "food"
+      "type": "food",
+      "joinedProject": ["halfhalf"]
     },
     {
       "name": "ผลไม้ลุงกับป้า2",
       "category": "ร้านขายผลไม้ / ร้านขายผัก",
       "location": "บางบัวทอง",
-      "type": "shop"
+      "type": "shop",
+      "joinedProject": ["wewin", "halfhalf"]
     },
     {
       "name": "ผลไม้ลุงกับป้า3",
       "category": "ร้านขายผลไม้ / ร้านขายผัก",
       "location": "บางบัวทอง",
-      "type": "otop"
+      "type": "otop",
+      "joinedProject": ["thongfah"]
     },
     {
       "name": "ผลไม้ลุงกับป้า4",
       "category": "ร้านขายผลไม้ / ร้านขายผัก",
       "location": "บางบัวทอง",
-      "type": "food"
+      "type": "food",
+      "joinedProject": ["halfhalf"]
     }
   ]
 }

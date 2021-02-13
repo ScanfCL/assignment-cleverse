@@ -11,5 +11,6 @@ export const Radio = styled(({ className, name, value, label }) => {
 })`
   > label {
     font-size: 14px;
+    font-weight: 300;
   }
 `;
