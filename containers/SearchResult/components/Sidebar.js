@@ -11,7 +11,7 @@ import { Location } from "../../../components/Icons";
 import { useHome, useStore } from "../../../pages";
 
 const Sidebar = ({ className }) => {
-  const { shopsState, setShopsState } = useHome();
+  const { setShopsState } = useHome();
   const { filterShopsByProject } = useStore();
   const router = useRouter();
 
