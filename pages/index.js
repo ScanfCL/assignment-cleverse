@@ -10,7 +10,7 @@ import { createStore } from "../stores/shops";
 const StoreContext = createContext(null);
 const HomeContext = createContext(null);
 
-function Home({ shops }) {
+function Home() {
   const store = useLocalStore(createStore);
   const [shopsState, setShopsState] = useState([]);
 

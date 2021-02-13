@@ -4,7 +4,9 @@ import styled from "styled-components";
 export const Breadcrumbs = styled(({ className }) => {
   return (
     <div className={className}>
-      <div className="container">หน้าแรก / ค้นหา</div>
+      <div className="container">
+        <span>หน้าแรก</span> / ค้นหา
+      </div>
     </div>
   );
 })`
@@ -18,5 +20,10 @@ export const Breadcrumbs = styled(({ className }) => {
     margin: auto;
     color: white;
     font-size: 14px;
+
+    > span {
+      text-decoration: underline;
+      font-weight: 300;
+    }
   }
 `;
